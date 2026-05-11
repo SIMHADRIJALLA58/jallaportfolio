@@ -1259,3 +1259,78 @@ footer{
   }
 
 }
+
+
+
+/* =========================================
+   MOBILE SCROLL LAG / DOUBLE SCROLL FIX
+   PASTE AT VERY BOTTOM
+========================================= */
+
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+
+body{
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+}
+
+/* FIX AOS SCROLL JERK */
+
+[data-aos]{
+  overflow:hidden;
+}
+
+/* FIX IMAGE OVERFLOW */
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+/* FIX MENU CAUSING SCROLL FREEZE */
+
+.nav-links{
+  will-change:transform;
+  transform:translateZ(0);
+}
+
+/* FIX HERO SECTION TOUCH ISSUE */
+
+.hero,
+.section,
+.project-card,
+.service-card{
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+
+/* REMOVE HORIZONTAL SHAKE */
+
+*{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* MOBILE PERFORMANCE FIX */
+
+@media screen and (max-width:768px){
+
+  body{
+    position:relative;
+    width:100%;
+  }
+
+  .hero-right img,
+  .project-card img,
+  .about-image img{
+    pointer-events:none;
+  }
+
+  .track{
+    animation-duration:25s;
+  }
+
+}
