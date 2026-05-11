@@ -1263,74 +1263,71 @@ footer{
 
 
 /* =========================================
-   MOBILE SCROLL LAG / DOUBLE SCROLL FIX
-   PASTE AT VERY BOTTOM
+   FINAL MOBILE SCROLL FIX
 ========================================= */
 
-html{
-  scroll-behavior:smooth;
-  overflow-x:hidden;
-}
-
+html,
 body{
+  width:100%;
   overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  touch-action:pan-y;
+  scroll-behavior:auto !important;
+  touch-action:auto;
+  overscroll-behavior:none;
 }
 
-/* FIX AOS SCROLL JERK */
-
-[data-aos]{
-  overflow:hidden;
-}
-
-/* FIX IMAGE OVERFLOW */
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-/* FIX MENU CAUSING SCROLL FREEZE */
-
-.nav-links{
-  will-change:transform;
-  transform:translateZ(0);
-}
-
-/* FIX HERO SECTION TOUCH ISSUE */
+/* REMOVE ALL TRANSFORM LAG */
 
 .hero,
 .section,
 .project-card,
-.service-card{
+.service-card,
+.about-grid,
+.hero-right,
+.hero-left{
+  transform:none !important;
+}
+
+/* FIX AOS MOBILE JERK */
+
+[data-aos]{
+  transform:none !important;
+  opacity:1 !important;
+  transition:none !important;
+}
+
+/* FIX FIXED NAVBAR SCROLL ISSUE */
+
+.navbar{
+  -webkit-transform:translateZ(0);
   transform:translateZ(0);
   backface-visibility:hidden;
 }
 
-/* REMOVE HORIZONTAL SHAKE */
+/* FIX MOBILE TOUCH SCROLL */
 
-*{
-  -webkit-tap-highlight-color:transparent;
+body{
+  -webkit-overflow-scrolling:touch;
 }
 
-/* MOBILE PERFORMANCE FIX */
+/* REMOVE IMAGE DRAG LAG */
 
-@media screen and (max-width:768px){
+img{
+  user-select:none;
+  -webkit-user-drag:none;
+  pointer-events:none;
+}
 
-  body{
-    position:relative;
-    width:100%;
-  }
+/* FIX MENU TOUCH ISSUE */
 
-  .hero-right img,
-  .project-card img,
-  .about-image img{
-    pointer-events:none;
-  }
+.menu-btn,
+.nav-links a,
+a,
+button{
+  touch-action:manipulation;
+}
 
-  .track{
-    animation-duration:25s;
-  }
+/* REMOVE HORIZONTAL MOVEMENT */
 
+*{
+  max-width:100%;
 }
